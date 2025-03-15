@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}User Portal{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="page-header">
+        <h1>User Portal</h1>
+    </div>
+    
+    <div class="alert alert-info">
+        <p>Welcome, {{ current_user.username }}! From here you can manage your genetic tests and view your results.</p>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Genetic Tests</h5>
+                    <p class="card-text">Browse and order genetic tests for rare disease diagnosis</p>
+                    <a href="{{ url_for('main.view_tests') }}" class="btn btn-primary btn-block">View Tests</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">My Orders</h5>
+                    <p class="card-text">Track and manage your test orders</p>
+                    <a href="{{ url_for('main.view_orders') }}" class="btn btn-primary btn-block">View Orders</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Rare Disease Registry</h5>
+                    <p class="card-text">Register for our rare disease database</p>
+                    <a href="{{ url_for('main.rare_disease_registry') }}" class="btn btn-primary btn-block">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-6 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Recent Activity</h5>
+                    <ul class="list-group list-group-flush">
+                        {% if current_user.orders %}
+                            {% for order in current_user.orders[:3] %}
+                                <li class="list-group-item">
+                                    Test: {{ order.test.test_name }} - Status: {{ order.status }}
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li class="list-group-item">No recent activity</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Notifications</h5>
+                    <ul class="list-group list-group-flush">
+                        {% if current_user.notifications %}
+                            {% for notification in current_user.notifications[:3] %}
+                                <li class="list-group-item">
+                                    {{ notification.message }}
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li class="list-group-item">No new notifications</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

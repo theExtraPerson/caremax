@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Your Account</title>
+</head>
+<body>
+    <p>Dear {{ user.username }},</p>
+    <p>Welcome to <b>RDC</b>!</p>
+    <p>To confirm your account please <a href="{{ url_for('auth.confirm', token=token, _external=True) }}">click here</a>.</p>
+    <p>Alternatively, you can paste the following link in your browser's address bar:</p>
+    <p>{{ url_for('auth.confirm', token=token, _external=True) }}</p>
+    <p>Note: replies to this email address are not monitored.</p>
+    <p>Sincerely,</p>
+    <p>The RDC Team</p>
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+   
+    <div class="row text-center">
+        <div class="col-md-12">
+            <h1 class="mt-4">Precision Medicine in Diabetes</h1>
+            <p class="lead">Precision medicine is transforming the way we approach diabetes care. By tailoring treatments to individual genetic, environmental, and lifestyle factors, we can achieve better outcomes and improve the quality of life for patients with diabetes.</p>
+            <a href="{{ url_for('main.learn_more') }}" class="btn btn-info mb-4">Learn More</a>
+        </div>
+    </div>
+
+    <div class="row mt-4 d-flex align-items-center">
+        <div class="col-md-6">
+            <h2>Are you out of Drugs?</h2>
+            <p>Don't let those sugar levels go high again. Get personalized diabetes prescriptions and consultations from our expert team.</p>
+            <a href="{{ url_for('main.order_prescriptions') }}" class="btn btn-secondary">Order for a refill</a>
+        </div>
+        <div class="col-md-6 text-center h-20">
+            <img src="{{ url_for('static', filename='images/sharestory.jpg') }}" class="img-fluid" alt="Share Your Story">
+        </div>
+    </div>
+
+    <div class="row mt-4 d-flex align-items-center">
+        <div class="col-md-6 text-center">
+            <img src="{{ url_for('static', filename='images/sharestory.jpg') }}" class="img-fluid" alt="Share Your Story">
+        </div>
+        <div class="col-md-6">
+            <h2>Share Your Story</h2>
+            <p>We want to hear from you! If you have a story about living with heart disease, please share it with us. Your experiences can help others and contribute to our understanding of heart care.</p>
+            <a href="{{ url_for('main.share_story') }}" class="btn btn-secondary">Tell Your Story</a>
+        </div>
+    </div>
+
+{% endblock %}

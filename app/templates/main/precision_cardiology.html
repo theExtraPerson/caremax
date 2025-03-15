@@ -1,0 +1,64 @@
+
+    
+
+{% extends "base.html" %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mt-4">Precision Medicine in Cardiology</h1>
+            <p class="lead">Precision medicine is revolutionizing heart care by providing personalized treatments based on individual genetic, environmental, and lifestyle factors. This approach helps in achieving better outcomes and improving the quality of life for patients with heart diseases.</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h2>Common Heart Diseases</h2>
+            <p>Learn about common heart diseases and their symptoms:</p>
+            <ul>
+                <li>Coronary Artery Disease (CAD)</li>
+                <li>Heart Attack</li>
+                <li>Heart Failure</li>
+                <li>Arrhythmias</li>
+                <li>Valvular Heart Disease</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h2>Precision Medicine in Heart Care</h2>
+            <p>Discover how precision medicine is contributing to heart care:</p>
+            <ul>
+                <li>Genetic Testing for Heart Disease Risk</li>
+                <li>Personalized Treatment Plans</li>
+                <li>Advanced Imaging Techniques</li>
+                <li>Targeted Therapies</li>
+                <li>Preventive Strategies</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h2>Order Heart Disease Prescriptions</h2>
+            <p>Get personalized heart disease prescriptions and consultations from our expert team.</p>
+            <a href="{{ url_for('main.order_prescriptions') }}" class="btn btn-primary">Order Now</a>
+        </div>
+        <div class="col-md-6">
+            <h2>Articles on Heart Care</h2>
+            <p>Stay informed with the latest articles on heart care and precision medicine:</p>
+            <ul class="list-unstyled">
+                <li><a href="{{ url_for('main.view_article', article_id=1) }}">The Role of Precision Medicine in Heart Disease</a></li>
+                <li><a href="{{ url_for('main.view_article', article_id=2) }}">Innovations in Cardiology: What You Need to Know</a></li>
+                <li><a href="{{ url_for('main.view_article', article_id=3) }}">Personalized Heart Care: A New Era</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

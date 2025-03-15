@@ -1,0 +1,136 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+html, body{
+    font-family: "Crimson Pro", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+/* Custom styles for the navbar */
+
+.navbar {
+    background-color: hsl(189, 100%, 50%) !important;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+    list-style-type: none;
+    padding-left: 0;
+}
+.nav-link:hover {
+    color: #ffdd57 !important;
+}
+.dropdown-menu {
+    background-color: #007bff;
+}
+.dropdown-item {
+    color: white !important;
+}
+.dropdown-item:hover {
+    background-color: #0056b3;
+}
+.btn-nav {
+    margin: 0 5px;
+}
+.btn-nav:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Custom styles for the footer */
+.footer a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+.footer {
+    background-color: #007bff;
+    color: white;
+}
+.footer a {
+    color: white;
+    text-decoration: underline;
+    list-style-type: none;
+}
+.footer ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: #007bff;
+}
+
+.social-icons a:hover {
+    color: #0056b3;
+}
+
+.core-value {
+    margin-top: 20px;
+}
+
+.core-value i {
+    color: #007bff;
+}
+
+.core-value h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.core-value p {
+    margin-bottom: 0;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+.card-header {
+    background-color: #007bff;
+    color: white;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.card-body {
+    background-color: #f8f9fa;
+}
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+ul li::before {
+    content: "•";
+    color: #007bff;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Custom styles for the core values */
+
+.core-value-card {
+    background-color: #007bff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.core-value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+

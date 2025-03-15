@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Genetic Tests{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="page-header d-flex justify-content-between align-items-center">
+        <h1>Genetic Tests</h1>
+        <a href="{{ url_for('main.user_portal') }}" class="btn btn-outline-secondary">
+            <i class="fa fa-arrow-left"></i> Back to Portal
+        </a>
+    </div>
+    
+    <div class="alert alert-info">
+        <p>Browse our comprehensive catalog of genetic tests for rare disease diagnosis. Select a test to view details and place an order.</p>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="input-group w-100">
+                    <input type="text" class="form-control" placeholder="Search tests..." id="test-search">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="dropdown float-right">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown">
+                    Filter by Category
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">All Categories</a>
+                    <a class="dropdown-item" href="#">Whole Exome Sequencing</a>
+                    <a class="dropdown-item" href="#">Whole Genome Sequencing</a>
+                    <a class="dropdown-item" href="#">Panel Testing</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for test in tests %}
+        <div class="col-md-4 mb-4 test-card">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-light">
+                    <span class="badge badge-primary float-right">{{ test.test_category }}</span>
+                    <h5 class="card-title mb-0">{{ test.test_name }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ test.test_description }}</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item p-2">
+                            <small class="text-muted">Sample Type:</small> {{ test.sample_type }}
+                        </li>
+                        <li class="list-group-item p-2">
+                            <small class="text-muted">Turnaround Time:</small> {{ test.turn_around_time }} days
+                        </li>
+                        <li class="list-group-item p-2">
+                            <small class="text-muted">Price:</small> ${{ "%.2f"|format(test.test_price) }}
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('main.test_details', test_id=test.test_id) }}" class="btn btn-outline-primary">View Details</a>
+                        <a href="{{ url_for('main.order_test', test_id=test.test_id) }}" class="btn btn-primary">Order Test</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    // Simple client-side search functionality
+    document.getElementById('test-search').addEventListener('keyup', function() {
+        let searchText = this.value.toLowerCase();
+        let testCards = document.querySelectorAll('.test-card');
+        
+        testCards.forEach(function(card) {
+            let testName = card.querySelector('.card-title').textContent.toLowerCase();
+            let testDesc = card.querySelector('.card-text').textContent.toLowerCase();
+            
+            if (testName.includes(searchText) || testDesc.includes(searchText)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+</script>
+{% endblock %}
+

@@ -1,0 +1,23 @@
+<!-- app/templates/admin/upload_article.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Upload Article</h1>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(size=32) }}
+    </p>
+    <p>
+        {{ form.clinic.label }}<br>
+        {{ form.clinic(size=32) }}
+    </p>
+    <p>
+        {{ form.pdf_file.label }}<br>
+        {{ form.pdf_file() }}
+    </p>
+    <p><input type="submit" value="Upload"></p>
+</form>
+{% endblock %}

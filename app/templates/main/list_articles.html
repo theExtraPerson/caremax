@@ -1,0 +1,14 @@
+<!-- app/templates/main/list_articles.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Articles</h1>
+<ul>
+    {% for article in articles %}
+    <li>
+        <a href="{{ url_for('main.view_article', article_id=article.id) }}">{{ article.title }}</a> - {{ article.clinic.name }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

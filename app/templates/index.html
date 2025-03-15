@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+
+    <!-- Introduction Section -->
+<div class="jumbotron text-center">
+    <h1 class="display-4 md-4 display-7">Welcome to Caremax Hospital</h1>
+    <p class="lead">At Caremax Hospital, we specialize in providing top-notch healthcare services for rare diseases. Our team of experts is dedicated to offering personalized care and advanced treatment options.</p>
+    <hr class="my-4">
+    <p class="lead">Explore our services and learn more about how we can help you achieve better health.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('main.view_orders') }}" role="button">Order Genetic Tests</a>
+</div>
+
+<!-- Mission and Vision Section -->
+<div class="row mt-5">
+    <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h2 class="card-title lead text-center display-4">Our Mission</h2>
+                <p class="card-text display-5">Advancing personalised cures, by harnessing the power of the genome through collaborative research and cutting edge technologies</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h2 class="card-title lead text-center display-4">Our Vision</h2>
+                <p class="card-text display-5">Restoring hope to people living with Non-Communicable Diseases, Diabetes, Heart, Cancer and Rare Diseases</p>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+<!-- Core Values Section -->
+<!-- Core Values Section -->
+<div class="mt-5">
+    <h2 class="text-center">Our Core Values</h2>
+    <div class="row text-center">
+        <div class="col-md-4 core-value">
+            <div class="card core-value-card shadow-sm h-100">
+                <div class="card-body">
+                    <i class="fas fa-lightbulb fa-3x mb-3"></i>
+                    <h4>Innovate and Fail</h4>
+                    <p>We believe in pushing the boundaries of medical science, even if it means failing sometimes. Innovation is key to progress.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 core-value">
+            <div class="card core-value-card shadow-sm h-100">
+                <div class="card-body">
+                    <i class="fas fa-heart fa-3x mb-3"></i>
+                    <h4>Be Compassionate</h4>
+                    <p>Compassion is at the heart of our care. We treat every patient with empathy and understanding.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 core-value">
+            <div class="card core-value-card shadow-sm h-100">
+                <div class="card-body">
+                    <i class="fas fa-bolt fa-3x mb-3"></i>
+                    <h4>Act Now</h4>
+                    <p>We take immediate action to provide the best possible care for our patients. Time is of the essence in healthcare.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action Section -->
+<div class="text-center mt-5">
+    <h2>Contact Us</h2>
+    <p class="lead">Get in touch with us for more information or to schedule an appointment.</p>
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success btn-lg mx-2" href="tel:+256200903232" role="button">
+            <i class="fas fa-phone-alt"></i> Call Us
+        </a>
+        <a class="btn btn-success btn-lg mx-2" href="https://wa.me/256788604592" role="button">
+            <i class="fab fa-whatsapp"></i> Send WhatsApp Message
+        </a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from('.core-value-card', {
+            scrollTrigger: {
+                trigger: '.core-value-card',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1
+        });
+    });
+</script>
+
+<style>
+    .core-value-card {
+        background-color: #007bff;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .core-value-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+    
+
+{% endblock %}
