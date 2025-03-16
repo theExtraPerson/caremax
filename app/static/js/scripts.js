@@ -59,3 +59,20 @@ document.addEventListener('DOMContentLoaded', function() {
         duration: 1
     });
 });
+
+// importance of precision oncology cards
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.hoverable-card .card-body');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+  });

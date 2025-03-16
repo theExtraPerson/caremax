@@ -12,7 +12,7 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     RDC_MAIL_SUBJECT_PREFIX = '[Caremax Hospital | Rare Disease Clinic]'
-    RDC_MAIL_SENDER = 'RDC Admin <caremaxhospitals98@gmail.com>'
+    RDC_MAIL_SENDER = 'RDC Admin <admin@caremaxhospitals.co.ug>'
     RDC_ADMIN = os.environ.get('RDC_ADMIN')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_FOLDER = os.path.join(basedir, 'uploads')

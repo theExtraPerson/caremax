@@ -134,3 +134,18 @@ ul li::before {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* importance of precision oncology cards */
+.hoverable-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .hoverable-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+  }
+  .hoverable-card .card-body {
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .hoverable-card:hover .card-body {
+    opacity: 1;
+  }
