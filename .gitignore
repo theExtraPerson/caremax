@@ -1,0 +1,25 @@
+# Ignore sensitive files
+.env
+config.py
+secrets.json
+private_key.pem
+
+# Ignore Vercel build files (except for vercel.json)
+.vercel/build
+.vercel/output
+
+# Ignore Python cache files
+__pycache__
+*.pyc
+
+# Ignore other files
+node_modules
+*.log
+*.tmp
+
+# Allow Vercel configuration files
+!vercel.json
+!now.json
+
+# Allow requirements file
+!requirements.txt

@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app/__init__.py",
+      "use": "@vercel/python",
+      "config": {
+        "function": "create_app",
+        "args": ["Config"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app/__init__.py"
+    }
+  ]
+}
