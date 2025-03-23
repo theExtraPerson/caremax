@@ -14,10 +14,32 @@ jobs:
         uses: actions/checkout@v3
 
       - name: SSH into VPS and Deploy
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
         run: |
-          ssh user@your-vps-ip <<EOF
-            cd \Desktop\RDC\caremax
+          echo "$SSH_PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key $VPS_USER@$VPS_HOST << 'EOF'
+            set -e  # Stop on errors
+
+            echo "🔄 Pulling latest changes..."
+            cd ~/Desktop/RDC/caremax
+            git fetch --all
+            git reset --hard origin/main
             git pull origin main
+
+            echo "🛑 Stopping existing containers..."
             docker-compose down
+
+            echo "🧹 Cleaning up old Docker images..."
+            docker system prune -af
+
+            echo "🚀 Building and running the updated application..."
             docker-compose up -d --build
+
+            echo "✅ Deployment successful!"
           EOF
+
+      - name: Cleanup SSH Key
+        run: rm -f private_key
