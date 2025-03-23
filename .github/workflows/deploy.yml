@@ -16,7 +16,7 @@ jobs:
       - name: SSH into VPS and Deploy
         run: |
           ssh user@your-vps-ip <<EOF
-            cd C:\Users\L. GRACE COMPUTERS\OneDrive\Desktop\RDC\caremax
+            cd \Desktop\RDC\caremax
             git pull origin main
             docker-compose down
             docker-compose up -d --build

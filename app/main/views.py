@@ -73,19 +73,19 @@ def view_tests():
 	return render_template('main.view_tests.html', tests=tests)
 
 @main.route('/tests/<int:test_id>')
-@login_required
+# @login_required
 def test_details(test_id):
 	test = Test.query.get_or_404(test_id)
 	return render_template('test_details.html', test=test)
 
 main.route('/order_test/<int:test_id>', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def order_test(test_id):
 	test = Test.query.get_or_404(test_id)
 	return render_template('order_test.html', test=test)
 
 @main.route('/orders')
-@login_required
+# @login_required
 def view_orders():
 	orders = TestOrder.query.filter_by(user_id=current_user.user_id).all()
 	return render_template(view_orders.html)

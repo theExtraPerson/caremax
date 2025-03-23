@@ -15,7 +15,8 @@ mail = Mail()
 moment = Moment()
 db = SQLAlchemy()
 login_manager = LoginManager()
-socketio = SocketIO()
+socketio = SocketIO(cors_allowed_origins="*")
+
 login_manager.login_view = 'auth.login'
 
 def create_app(config_name):
@@ -28,8 +29,10 @@ def create_app(config_name):
 	bootstrap.init_app(app)
 	db.init_app(app)
 	login_manager.init_app(app)
-	socketio.init_app(app, cors_allowed_origins="*")
+	socketio.init_app(app)
 	
+
+
 	from .main import main as main_blueprint
 	app.register_blueprint(main_blueprint)	
 
@@ -55,5 +58,10 @@ def create_app(config_name):
 			os.path.join(app.root_path, 'static'),
 			'favicon.ico', mimetype='image/vnd/microsoft.icon'
 		)
-
+	
 	return app
+
+app = create_app()
+
+def handler(event, context):
+	return app.wsgi_app(event, context)
